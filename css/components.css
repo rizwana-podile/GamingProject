@@ -1,0 +1,112 @@
+/* ==========================================================================
+   AETHERIA GAME ENGINE - COMPONENTS & BUTTON STYLING
+   ========================================================================== */
+
+/* App Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-title h1 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+/* Button System */
+.btn {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-cyan), #0088ff);
+  color: var(--text-dark);
+  box-shadow: var(--glow-cyan);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--accent-cyan);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--accent-magenta), #ff0044);
+  color: #fff;
+  box-shadow: var(--glow-magenta);
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+}
+
+.btn-icon {
+  padding: 10px;
+  border-radius: 50%;
+}
+
+/* HUD Stat Cards */
+.hud-dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+}
+
+.hud-stat-group {
+  display: flex;
+  gap: 24px;
+}
+
+.hud-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.hud-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.hud-value {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.text-cyan { color: var(--accent-cyan); }
+.text-gold { color: var(--accent-gold); }
+.text-green { color: var(--accent-green); }

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="neon">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Aetheria Engine - High performance multi-game arcade ecosystem featuring 6 game titles, Web Audio synth tracker, 2D/3D physics, procedural WFC dungeons, and visual level studio.">
+  <meta name="keywords" content="Game Engine, Web Audio Synth, HTML5 Games, Arcade Ecosystem, Cyberpunk Game, WFC Procedural, Physics Sandbox">
+  <meta name="theme-color" content="#07080c">
+  
+  <title>Aetheria Engine & Multi-Game Arcade Ecosystem</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Outfit:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Particle Background Canvas -->
+  <canvas id="background-canvas"></canvas>
+
+  <div id="app-container">
+    
+    <!-- Application Header & Navigation Bar -->
+    <header class="app-header glass-panel">
+      <div class="brand-title">
+        <span class="brand-icon" style="font-size: 1.6rem;">⚡</span>
+        <div>
+          <h1 class="text-gradient">AETHERIA ENGINE</h1>
+          <div style="font-size: 0.7rem; color: var(--text-muted); letter-spacing: 2px;">MULTI-GAME ARCADE ECOSYSTEM</div>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <button id="btn-toggle-sound" class="btn btn-secondary btn-icon" title="Toggle Audio Sound">🔊</button>
+        <button id="btn-settings" class="btn btn-secondary btn-icon" title="Game Settings">⚙️</button>
+      </div>
+    </header>
+
+    <!-- Main HUD Dashboard -->
+    <section class="hud-dashboard glass-panel">
+      <div class="hud-stat-group">
+        <div class="hud-stat">
+          <span class="hud-label">Active Game</span>
+          <span id="hud-game-name" class="hud-value text-cyan">CyberSnake 3D</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">Score</span>
+          <span id="hud-score" class="hud-value text-gold">0</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button onclick="window.appUI.showOverlay('start-overlay')" class="btn btn-secondary">🎮 Select Game</button>
+      </div>
+    </section>
+
+    <!-- Core Game Viewport & Canvas Container -->
+    <main class="game-viewport glass-panel">
+      <canvas id="game-canvas" width="640" height="512"></canvas>
+
+      <!-- Main Game Launcher Overlay -->
+      <div id="start-overlay" class="game-overlay">
+        <div class="overlay-title text-gradient">AETHERIA ARCADE</div>
+        <div class="overlay-subtitle">Select your game title below to launch into the 60 FPS Aetheria Arcade Ecosystem!</div>
+        
+        <div class="arcade-game-selector">
+          <button class="btn-select-game game-card-btn" data-game="cybersnake">🐍 CyberSnake 3D</button>
+          <button class="btn-select-game game-card-btn" data-game="dungeon">⚔️ Aether RPG</button>
+          <button class="btn-select-game game-card-btn" data-game="shooter">🚀 Space Shooter</button>
+          <button class="btn-select-game game-card-btn" data-game="racer">🏎️ CyberRacer 3D</button>
+          <button class="btn-select-game game-card-btn" data-game="hex">🛡️ Hex Tactics</button>
+          <button class="btn-select-game game-card-btn" data-game="sandbox">🧪 Physics Sandbox</button>
+        </div>
+
+        <div style="margin-top: 15px;">
+          <button id="btn-play-classic" class="btn btn-primary">⚡ Launch Active Title</button>
+        </div>
+      </div>
+
+      <!-- Pause Menu Overlay -->
+      <div id="pause-overlay" class="game-overlay hidden">
+        <div class="overlay-title text-cyan">SYSTEM PAUSED</div>
+        <div class="overlay-menu">
+          <button onclick="window.appUI.togglePause()" class="btn btn-primary">▶️ Resume Game</button>
+          <button onclick="window.appUI.showOverlay('start-overlay')" class="btn btn-secondary">🏠 Main Menu</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Engine Script Subsystems -->
+  <!-- 1. Engine Math -->
+  <script src="js/engine/math/vector2.js"></script>
+  <script src="js/engine/math/vector3.js"></script>
+  <script src="js/engine/math/matrix4.js"></script>
+  <script src="js/engine/math/quaternion.js"></script>
+  <script src="js/engine/math/spatial_hash.js"></script>
+  <script src="js/engine/math/quadtree.js"></script>
+  <script src="js/engine/math/octree.js"></script>
+  <script src="js/engine/math/noise.js"></script>
+
+  <!-- 2. Engine Physics -->
+  <script src="js/engine/physics/verlet_physics.js"></script>
+  <script src="js/engine/physics/rigid_body.js"></script>
+  <script src="js/engine/physics/collision_sat.js"></script>
+  <script src="js/engine/physics/particle_engine.js"></script>
+  <script src="js/engine/physics/fluid_grid.js"></script>
+
+  <!-- 3. Engine ECS & State -->
+  <script src="js/engine/ecs/entity_manager.js"></script>
+  <script src="js/engine/ecs/component_store.js"></script>
+  <script src="js/engine/ecs/system_pipeline.js"></script>
+  <script src="js/engine/ecs/event_bus.js"></script>
+  <script src="js/engine/ecs/state_machine.js"></script>
+
+  <!-- 4. Engine Audio -->
+  <script src="js/engine/audio/synth_core.js"></script>
+  <script src="js/engine/audio/sound_effects.js"></script>
+  <script src="js/engine/audio/chiptune_tracker.js"></script>
+  <script src="js/engine/audio/spatial_audio.js"></script>
+
+  <!-- 5. Engine AI -->
+  <script src="js/engine/ai/astar_pathfinder.js"></script>
+  <script src="js/engine/ai/behavior_tree.js"></script>
+  <script src="js/engine/ai/goap_planner.js"></script>
+  <script src="js/engine/ai/minimax_ai.js"></script>
+
+  <!-- 6. Engine Procedural -->
+  <script src="js/engine/procedural/wfc_generator.js"></script>
+  <script src="js/engine/procedural/bsp_dungeon.js"></script>
+  <script src="js/engine/procedural/cellular_automata.js"></script>
+  <script src="js/engine/procedural/l_system.js"></script>
+
+  <!-- 7. WebGL Shaders -->
+  <script src="js/engine/shaders/shader_library.js"></script>
+
+  <!-- 8. Arcade Games Suite -->
+  <script src="js/games/cybersnake_3d.js"></script>
+  <script src="js/games/dungeon_rpg.js"></script>
+  <script src="js/games/stellar_horizon.js"></script>
+  <script src="js/games/cyber_racer.js"></script>
+  <script src="js/games/hex_tactics.js"></script>
+  <script src="js/games/particle_sandbox.js"></script>
+
+  <!-- 9. Studio Tools -->
+  <script src="js/tools/level_editor.js"></script>
+  <script src="js/tools/script_node_editor.js"></script>
+  <script src="js/tools/asset_packer.js"></script>
+
+  <!-- 10. Core App & UI Orchestration -->
+  <script src="js/arcade_hub.js"></script>
+  <script src="js/ui_manager.js"></script>
+  <script src="js/app_orchestrator.js"></script>
+
+</body>
+</html>

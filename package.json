@@ -1,0 +1,33 @@
+{
+  "name": "aetheria-game-engine",
+  "version": "3.0.0",
+  "description": "Aetheria Game Engine & Multi-Game Arcade Ecosystem - Full-stack HTML5 Canvas / WebGL Game Engine with WebAudio Synthesizer, Physics, ECS, AI Pathfinding, and WebSocket Server.",
+  "main": "server.js",
+  "private": true,
+  "license": "Proprietary",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "jest --coverage"
+  },
+  "keywords": [
+    "game-engine",
+    "html5-game",
+    "webaudio-synth",
+    "physics-engine",
+    "ecs",
+    "webgl",
+    "websocket",
+    "express"
+  ],
+  "author": "Antigravity Engineering",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
